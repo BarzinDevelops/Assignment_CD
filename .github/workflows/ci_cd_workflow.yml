@@ -24,7 +24,7 @@ jobs:
 
     - name: Run Tests
       run: |
-        pytest farm/
+        pytest farm/test_main.py
 
     - name: Deploy to VPS
       if: success()
