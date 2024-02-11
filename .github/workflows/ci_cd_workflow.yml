@@ -29,4 +29,5 @@ jobs:
     - name: Deploy to VPS
       if: success()
       run: |
-        sh deploy.sh
+        chmod +x deploy.sh
+        ./deploy.sh
