@@ -26,11 +26,6 @@ jobs:
         mkdir -p $HOME/.ssh/DigitalOcean_ssh_barrybuntu
         echo "${{ secrets.DEPLOY_KEY }}" > $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
         chmod 600 $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
-    - name: Debug Information
-      run: |
-        echo "Current Directory: $(pwd)"
-        echo "Contents of .ssh directory: $(ls -la .ssh)"
-        echo "Contents of .ssh/DigitalOcean_ssh_barrybuntu directory: $(ls -la .ssh/DigitalOcean_ssh_barrybuntu)"
     - name: Run Tests
       run: |
         pytest farm/test_main.py
