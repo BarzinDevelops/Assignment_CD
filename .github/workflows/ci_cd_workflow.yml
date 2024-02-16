@@ -18,10 +18,16 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: Install Dependencies
+    #- name: Install Dependencies
+     # run: |
+      #  pip install -r farm/requirements.txt
+    - name: Print Environment
       run: |
-        pip install -r farm/requirements.txt
-
+        echo "Home Directory: $HOME"
+        echo "SSH Private Key Path: $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa"
+        echo "Environment Variables:"
+        env
+        ls -l $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
     - name: Run Tests
       run: |
         pytest farm/test_main.py
