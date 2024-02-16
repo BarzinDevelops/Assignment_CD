@@ -31,13 +31,13 @@ jobs:
         echo "Current Directory: $(pwd)"
         echo "Contents of .ssh directory: $(ls -la .ssh)"
         echo "Contents of .ssh/DigitalOcean_ssh_barrybuntu directory: $(ls -la .ssh/DigitalOcean_ssh_barrybuntu)"
-    - name: Print Environment
-      run: |
-        echo "Home Directory: $HOME"
-        echo "SSH Private Key Path: $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa"
-        echo "Environment Variables:"
-        env
-        ls -l $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
+#    - name: Print Environment
+ #     run: |
+  #      echo "Home Directory: $HOME"
+   #     echo "SSH Private Key Path: $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa"
+    #    echo "Environment Variables:"
+     #   env
+      #  ls -l $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
     - name: Run Tests
       run: |
         pytest farm/test_main.py
