@@ -21,22 +21,20 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install -r farm/requirements.txt
-    
+
+
     - name: Use SSH private key
       run: |
         mkdir -p $HOME/.ssh/DigitalOcean_ssh_barrybuntu
         echo "${{ secrets.DEPLOY_KEY }}" > $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
         chmod 600 $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
-    
+
     - name: Create known_hosts file
       run: |
         mkdir -p $HOME/.ssh
-        echo "165.22.89.227 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyZj0Ulyc/KH7Vj1skspvm/7RUlZ3FOAk9Im6AtOHG0hIncSQTX9OrmvxN7UtA61QY3Zz4fscFHqG4wD5YZiZsEriCTe8tKYzDelNn0MPHNnWDJEtYwoKh6aP2mweXDmmlXBfZRnsE0ap78BmF2+Rbj3h6cuITmKuiN5TmQ8cZiPOFqhYn5+yhAwxTe+Dro999ubbyRYUMlnVL4mLPaZsewHXn+5YKdkFTUO8RjxzZBkuZExweRFziQ9DkX6Xv5HOZV/VY+uY0XL+ZJfqs6YH9BxnFh6e0ndQ1KaBB60VV+TnOISVH9ScIHp0l/Cw10BSF3Ac+Q+Oa3/yji33vRWi7 BarryDev@MSI" > $HOME/.ssh/known_hosts
-
-
-    - name: Print known_hosts
-      run: cat $HOME/.ssh/known_hosts
-
+        echo "165.22.89.227 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyZj0Ulyc/KH7Vj1skspvm/7RUlZ3FOAk9Im6AtOHG0hIncSQTX9OrmvxN7UtA61QY3Zz4fscFHqG4wD5YZiZsEriCTe8tKYzDelNn0
+        MPHNnWDJEtYwoKh6aP2mweXDmmlXBfZRnsE0ap78BmF2+Rbj3h6cuITmKuiN5TmQ8cZiPOFqhYn5+yhAwxTe+Dro999ubbyRYUMlnVL4mLPaZsewHXn+5YKdkFTUO8RjxzZBkuZExweRFziQ9DkX6Xv5HOZV/VY+u
+        Y0XL+ZJfqs6YH9BxnFh6e0ndQ1KaBB60VV+TnOISVH9ScIHp0l/Cw10BSF3Ac+Q+Oa3/yji33vRWi7 BarryDev@MSI" > $HOME/.ssh/known_hosts
 
     - name: Run Tests
       run: |
