@@ -21,23 +21,16 @@ jobs:
     #- name: Install Dependencies
      # run: |
       #  pip install -r farm/requirements.txt
-    #- name: Use SSH private key
-     # run: |
-      #  mkdir -p $HOME/.ssh
-       # cp /c/Users/BarryDev/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
-        #chmod 600 $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
+    - name: Use SSH private key
+      run: |
+        mkdir -p $HOME/.ssh
+        echo "${{ secrets.DEPLOY_KEY }}" > $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
+        chmod 600 $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
     - name: Debug Information
       run: |
         echo "Current Directory: $(pwd)"
         echo "Contents of .ssh directory: $(ls -la .ssh)"
         echo "Contents of .ssh/DigitalOcean_ssh_barrybuntu directory: $(ls -la .ssh/DigitalOcean_ssh_barrybuntu)"
-#    - name: Print Environment
- #     run: |
-  #      echo "Home Directory: $HOME"
-   #     echo "SSH Private Key Path: $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa"
-    #    echo "Environment Variables:"
-     #   env
-      #  ls -l $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa
     - name: Run Tests
       run: |
         pytest farm/test_main.py
