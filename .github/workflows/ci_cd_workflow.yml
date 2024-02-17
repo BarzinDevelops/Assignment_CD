@@ -43,7 +43,7 @@ jobs:
         chmod +x deploy.sh
         ./deploy.sh
 
-     - name: Restart Gunicorn
-        if: success()
-        run: |
-          ssh -i $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa root@165.22.89.227 'sudo systemctl restart farm'
+    - name: Restart Gunicorn
+      if: success()
+      run: |
+        ssh -i $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa root@165.22.89.227 'sudo systemctl restart farm'
