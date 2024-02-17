@@ -33,9 +33,6 @@ jobs:
         mkdir -p $HOME/.ssh
         ssh-keyscan -t rsa 165.22.89.227 >> $HOME/.ssh/known_hosts
 
-    - name: Print known_hosts
-      run: cat $HOME/.ssh/known_hosts
-
     - name: Run Tests
       run: |
         pytest farm/test_main.py
@@ -45,3 +42,8 @@ jobs:
       run: |
         chmod +x deploy.sh
         ./deploy.sh
+
+     - name: Restart Gunicorn
+        if: success()
+        run: |
+          ssh -i $HOME/.ssh/DigitalOcean_ssh_barrybuntu/id_rsa root@165.22.89.227 'sudo systemctl restart farm'
